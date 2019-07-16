@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'dashboard',
   template: `
-    <h2>dashboard</h2>
+    <tasks-widget></tasks-widget>
   `,
-  styles: [`
-    
-  `]
+  styles: [``]
 })
 export class DashboardComponent implements OnInit {
 

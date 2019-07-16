@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Task} from "../domain/task.class";
+import {Observable} from "rxjs/internal/Observable";
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,15 @@ export class TasksService {
    * @param {Task} task
    */
   createTask(task: Task){
-    
+
   }
 
   /**
    * Fetch list of all tasks
-   * @returns {Task[]}
+   * @returns {Observable<any>}
    */
-  getTaskList(): Task[]{
-    let list: Task[] = [];
-    return list;
+  getTaskList(){
+    return this.http.get("/assets/data/taskList.mock.json");
   }
 
   /**
