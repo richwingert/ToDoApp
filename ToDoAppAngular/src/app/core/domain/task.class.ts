@@ -13,7 +13,7 @@ export class Task {
     if(o){
       if(o.id)          this._id =          o.id;
       if(o.name)        this._name =        o.name;
-      if(o.dueDate)     this._dueDate =     o.dueDate;
+      if(o.dueDate)     this._dueDate =     new Date(o.dueDate);
       if(o.description) this._description = o.description;
       if(o.isComplete)  this._isComplete =  o.isComplete;
       if(o.priority)    this._priority =    o.priority;

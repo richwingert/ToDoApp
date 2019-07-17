@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+//font-awesome
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome';
+
+//ag-grid
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+//global generic class-style
+.green {color: green;}
+.red{color: red;}
+.blue{color: blue;}
+.orange{color: orange;}
+.pointer{cursor: pointer;}
+
+//apply blurred background image
+body .background-image{
+  background: url("assets/imgs/background-white.jpg");
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  $blur: 3px;
+  -webkit-filter: blur($blur);
+  -moz-filter:    blur($blur);
+  -o-filter:      blur($blur);
+  -ms-filter:     blur($blur);
+  filter:         blur($blur);
+}
+

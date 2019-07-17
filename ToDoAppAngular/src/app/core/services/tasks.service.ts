@@ -41,4 +41,12 @@ export class TasksService {
   removeTask(task: Task){
 
   }
+
+  /**
+   * Helper function to get the column definitions for the tasks widget grid
+   * @returns {Observable<Object>}
+   */
+  getTasksWidgetColDef(){
+    return this.http.get("/assets/data/colDefs.tasks-widget.json");
+  }
 }

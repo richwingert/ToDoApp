@@ -1,0 +1,48 @@
+{
+  "columnDefinitions": [
+    {
+      "headerName": "",
+      "field": "edit",
+      "cellRenderer": "editRenderer",
+      "suppressSizeToFit": true,
+      "width": 50
+    },
+
+    {
+      "headerName": "Task Name",
+      "suppressSizeToFit": true,
+      "filter": "agTextColumnFilter",
+      "width": 150,
+      "field": "name"
+    },
+
+    {
+      "headerName": "Completed",
+      "field": "isComplete",
+      "cellRenderer": "completedRenderer",
+      "suppressSizeToFit": true,
+      "width": 100
+    },
+
+    {
+      "headerName": "Due Date",
+      "field": "dueDate",
+      "filter": "agDateColumnFilter",
+      "suppressSizeToFit": true,
+      "width": 150
+    },
+
+    {
+      "headerName": "Priority",
+      "field": "priority",
+      "filter": "agNumberColumnFilter",
+      "suppressSizeToFit": true,
+      "width": 100
+    },
+
+    {
+      "headerName": "Description",
+      "field": "description"
+    }
+  ]
+}
