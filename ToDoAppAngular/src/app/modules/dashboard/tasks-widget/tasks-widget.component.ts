@@ -32,26 +32,26 @@ export class TasksWidgetComponent implements OnInit {
   ngOnInit() {
     //fetch list of tasks from API
     this.tasksService.getTaskList()
-      //log and flatten the array
-      .pipe(
-        tap(items => console.log("Tasks: ", items)),
-        flatMap(items => items["tasks"])
-      )
-      //for each task, push it to the list of tasks
-      .subscribe(task => {
-        this.taskList.push(new Task(task));
-      })
+      .subscribe((tasks: Task[]) => {
+        //log the array
+        console.log("Tasks: ", tasks);
+        //for each task, push it to the list of tasks
+        tasks.forEach(task => this.taskList.push(new Task(task)));
+        //refresh the grid if it happened to init first
+        if(this.api) this.api.setRowData(this.taskList)
+      });
 
     //fetch the column definitions for ag-grid
     //(rather than hard-coding, we fetch it with http service, theoretically allowing this to be dynamic in the future)
     this.tasksService.getTasksWidgetColDef()
-      .pipe(tap(data => console.log("Column Defs: ", data)),)
+      //log the array
+      .pipe(tap(data => console.log("Column Defs: ", data)))
       .subscribe(data =>{
-      let colDefs: ColDef[] = [];
-      if(data && data["columnDefinitions"])
-        data["columnDefinitions"].forEach(colDef => colDefs.push(colDef));
-      this.colDefs = colDefs;
-    })
+        let colDefs: ColDef[] = [];
+        if(data && data["columnDefinitions"])
+          data["columnDefinitions"].forEach(colDef => colDefs.push(colDef));
+        this.colDefs = colDefs;
+      })
   }
 
 

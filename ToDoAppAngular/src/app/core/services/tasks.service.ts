@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Task} from "../domain/task.class";
 import {Observable} from "rxjs/internal/Observable";
+import {AppConstants} from "../../app.constants";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class TasksService {
    * @returns {Observable<any>}
    */
   getTaskList(){
-    return this.http.get("/assets/data/taskList.mock.json");
+    // return this.http.get("/assets/data/taskList.mock.json");
+    return this.http.get(AppConstants.getTasksAPI);
   }
 
   /**
@@ -31,7 +33,7 @@ export class TasksService {
    * @param {Task} task
    */
   updateTask(task: Task){
-
+    return this.http.post(AppConstants.saveTasksAPI, task);
   }
 
   /**

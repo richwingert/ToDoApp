@@ -18,7 +18,7 @@
 
     {
       "headerName": "Completed",
-      "field": "isComplete",
+      "field": "completed",
       "cellRenderer": "completedRenderer",
       "suppressSizeToFit": true,
       "width": 100
