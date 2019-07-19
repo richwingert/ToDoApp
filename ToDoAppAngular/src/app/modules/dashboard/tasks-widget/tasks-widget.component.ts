@@ -5,6 +5,7 @@ import {flatMap, tap} from "rxjs/operators";
 import {ColDef, ColumnApi, GridApi} from "ag-grid-community";
 import {EditRendererComponent} from "./renderers/edit.renderer.component";
 import {CompletedRendererComponent} from "./renderers/completed.renderer.component";
+import {DeleteRendererComponent} from "./renderers/delete.renderer.component";
 
 @Component({
   selector: 'tasks-widget',
@@ -21,6 +22,7 @@ export class TasksWidgetComponent implements OnInit {
 
   frameworkComponents: any =  {
     editRenderer: EditRendererComponent,
+    deleteRenderer: DeleteRendererComponent,
     completedRenderer: CompletedRendererComponent
   };
 
@@ -63,4 +65,7 @@ export class TasksWidgetComponent implements OnInit {
     this.api.sizeColumnsToFit();
   }
 
+  showModal(){
+    this.tasksService.showEditModal('new', new Task({}));
+  }
 }

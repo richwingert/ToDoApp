@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Task} from "../domain/task.class";
 import {Observable} from "rxjs/internal/Observable";
@@ -41,7 +41,7 @@ export class TasksService {
    * @param {Task} task
    */
   removeTask(task: Task){
-
+    return this.http.post(AppConstants.deleteTasksAPI, task);
   }
 
   /**
@@ -50,5 +50,10 @@ export class TasksService {
    */
   getTasksWidgetColDef(){
     return this.http.get("/assets/data/colDefs.tasks-widget.json");
+  }
+
+  showEditModal$: EventEmitter<any> = new EventEmitter<any>();
+  showEditModal(mode: string, task: Task) {
+    this.showEditModal$.emit({mode: mode, task: task});
   }
 }

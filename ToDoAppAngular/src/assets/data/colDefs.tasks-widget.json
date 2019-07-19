@@ -43,6 +43,13 @@
     {
       "headerName": "Description",
       "field": "description"
+    },
+    {
+      "headerName": "Delete",
+      "field": "del",
+      "cellRenderer": "deleteRenderer",
+      "suppressSizeToFit": true,
+      "width": 70
     }
   ]
 }

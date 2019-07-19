@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'dashboard',
   template: `
     <tasks-widget></tasks-widget>
+    <edit-modal></edit-modal>
   `,
   styles: [``]
 })
