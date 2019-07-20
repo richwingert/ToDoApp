@@ -8,6 +8,7 @@ import {CompletedRendererComponent} from "./renderers/completed.renderer.compone
 import {DeleteRendererComponent} from "./renderers/delete.renderer.component";
 import {DateRendererComponent} from "./renderers/date.renderer.component";
 import {CreateTaskHeaderRendererComponent} from "./renderers/create-task.header.renderer.component";
+import {CompletedFilterComponent} from "./renderers/completed.filter.component";
 
 @Component({
   selector: 'tasks-widget',
@@ -23,7 +24,11 @@ export class TasksWidgetComponent implements OnInit {
   private columnApi: ColumnApi;
 
   frameworkComponents: any =  {
+    //filter
+    completedFilter: CompletedFilterComponent,
+    //header
     createTaskHeader: CreateTaskHeaderRendererComponent,
+    //cell
     editRenderer: EditRendererComponent,
     deleteRenderer: DeleteRendererComponent,
     dateRenderer: DateRendererComponent,

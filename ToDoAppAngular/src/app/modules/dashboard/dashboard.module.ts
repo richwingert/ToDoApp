@@ -11,6 +11,7 @@ import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
 import {FormsModule} from "@angular/forms";
 import {DateRendererComponent} from "./tasks-widget/renderers/date.renderer.component";
 import {CreateTaskHeaderRendererComponent} from "./tasks-widget/renderers/create-task.header.renderer.component";
+import {CompletedFilterComponent} from "./tasks-widget/renderers/completed.filter.component";
 
 
 
@@ -19,6 +20,9 @@ import {CreateTaskHeaderRendererComponent} from "./tasks-widget/renderers/create
     DashboardComponent,
     TasksWidgetComponent,
     EditModalComponent,
+
+    //filter renderers
+    CompletedFilterComponent,
 
     //header renderers
     CreateTaskHeaderRendererComponent,
@@ -31,6 +35,8 @@ import {CreateTaskHeaderRendererComponent} from "./tasks-widget/renderers/create
   ],
   imports: [
     AgGridModule.withComponents([
+      //filter renderers
+      CompletedFilterComponent,
       //header renderers
       CreateTaskHeaderRendererComponent,
 

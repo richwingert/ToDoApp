@@ -13,16 +13,17 @@
       "headerName": "Task Name",
       "suppressSizeToFit": true,
       "filter": "agTextColumnFilter",
-      "width": 150,
+      "width": 250,
       "field": "name"
     },
 
     {
       "headerName": "Completed",
       "field": "completed",
+      "filter": "completedFilter",
       "cellRenderer": "completedRenderer",
       "suppressSizeToFit": true,
-      "width": 100
+      "width": 125
     },
 
     {
@@ -45,8 +46,7 @@
     {
       "headerName": "Description",
       "field": "description",
-      "filter": "agTextColumnFilter",
-      "width": 300
+      "filter": "agTextColumnFilter"
     },
     {
       "headerName": "Delete",
