@@ -3,12 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {Task} from "../domain/task.class";
 import {Observable} from "rxjs/internal/Observable";
 import {AppConstants} from "../../app.constants";
+import {GridApi} from "ag-grid-community";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
+  api: GridApi;
   constructor(private http: HttpClient) { }
 
   /**
@@ -16,7 +18,7 @@ export class TasksService {
    * @param {Task} task
    */
   createTask(task: Task){
-
+    return this.http.post(AppConstants.saveTasksAPI, task);
   }
 
   /**
@@ -53,7 +55,8 @@ export class TasksService {
   }
 
   showEditModal$: EventEmitter<any> = new EventEmitter<any>();
-  showEditModal(mode: string, task: Task) {
-    this.showEditModal$.emit({mode: mode, task: task});
+  showEditModal(mode: string, confirmText: string, task: Task) {
+    let clonedTask: Task = new Task(task);
+    this.showEditModal$.emit({mode: mode, confirmText: confirmText, task: clonedTask});
   }
 }

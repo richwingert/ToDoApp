@@ -6,6 +6,8 @@ import {ColDef, ColumnApi, GridApi} from "ag-grid-community";
 import {EditRendererComponent} from "./renderers/edit.renderer.component";
 import {CompletedRendererComponent} from "./renderers/completed.renderer.component";
 import {DeleteRendererComponent} from "./renderers/delete.renderer.component";
+import {DateRendererComponent} from "./renderers/date.renderer.component";
+import {CreateTaskHeaderRendererComponent} from "./renderers/create-task.header.renderer.component";
 
 @Component({
   selector: 'tasks-widget',
@@ -21,8 +23,10 @@ export class TasksWidgetComponent implements OnInit {
   private columnApi: ColumnApi;
 
   frameworkComponents: any =  {
+    createTaskHeader: CreateTaskHeaderRendererComponent,
     editRenderer: EditRendererComponent,
     deleteRenderer: DeleteRendererComponent,
+    dateRenderer: DateRendererComponent,
     completedRenderer: CompletedRendererComponent
   };
 
@@ -57,15 +61,12 @@ export class TasksWidgetComponent implements OnInit {
   }
 
 
-  // one grid initialisation, grap the APIs and auto resize the columns to fit the available space
+  // one grid initialisation, grab the APIs and auto resize the columns to fit the available space
   onGridReady(params): void {
     this.api = params.api;
+    this.tasksService.api = params.api;
     this.columnApi = params.columnApi;
 
     this.api.sizeColumnsToFit();
-  }
-
-  showModal(){
-    this.tasksService.showEditModal('new', new Task({}));
   }
 }

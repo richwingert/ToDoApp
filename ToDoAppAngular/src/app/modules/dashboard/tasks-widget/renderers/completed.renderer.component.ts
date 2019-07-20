@@ -7,6 +7,7 @@ import {Task} from "../../../../core/domain/task.class";
   selector: 'completed-renderer',
   template: `
     <i class="fa fa-2x pointer" 
+       [title]="params.data.completed ? 'Completed!' : 'Not Completed!'"
        [ngClass]="params.data.completed ? 'fa-check blue' : 'fa-times red'"
        (click)="toggleCompletion()">
     </i>

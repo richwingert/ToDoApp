@@ -7,6 +7,10 @@ import {EditRendererComponent} from "./tasks-widget/renderers/edit.renderer.comp
 import {CompletedRendererComponent} from "./tasks-widget/renderers/completed.renderer.component";
 import {DeleteRendererComponent} from "./tasks-widget/renderers/delete.renderer.component";
 import { EditModalComponent } from './edit-modal/edit-modal.component';
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import {FormsModule} from "@angular/forms";
+import {DateRendererComponent} from "./tasks-widget/renderers/date.renderer.component";
+import {CreateTaskHeaderRendererComponent} from "./tasks-widget/renderers/create-task.header.renderer.component";
 
 
 
@@ -16,21 +20,29 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     TasksWidgetComponent,
     EditModalComponent,
 
+    //header renderers
+    CreateTaskHeaderRendererComponent,
 
     //cell renderers
     EditRendererComponent,
     DeleteRendererComponent,
+    DateRendererComponent,
     CompletedRendererComponent
   ],
   imports: [
     AgGridModule.withComponents([
+      //header renderers
+      CreateTaskHeaderRendererComponent,
+
       //cell renderers
       EditRendererComponent,
       DeleteRendererComponent,
+      DateRendererComponent,
       CompletedRendererComponent
     ]),
-    CommonModule
-
+    CommonModule,
+    FormsModule,
+    BsDatepickerModule.forRoot(),
   ]
 })
 export class DashboardModule { }

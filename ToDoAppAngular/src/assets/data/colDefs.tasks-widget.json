@@ -4,6 +4,7 @@
       "headerName": "",
       "field": "edit",
       "cellRenderer": "editRenderer",
+      "headerComponent": "createTaskHeader",
       "suppressSizeToFit": true,
       "width": 50
     },
@@ -27,6 +28,7 @@
     {
       "headerName": "Due Date",
       "field": "dueDate",
+      "cellRenderer": "dateRenderer",
       "filter": "agDateColumnFilter",
       "suppressSizeToFit": true,
       "width": 150
@@ -42,7 +44,9 @@
 
     {
       "headerName": "Description",
-      "field": "description"
+      "field": "description",
+      "filter": "agTextColumnFilter",
+      "width": 300
     },
     {
       "headerName": "Delete",

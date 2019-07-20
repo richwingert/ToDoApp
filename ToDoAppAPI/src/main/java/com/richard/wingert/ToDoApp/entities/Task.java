@@ -23,16 +23,19 @@ public class Task {
     public Task() {
         this.name = "";
         this.completed = false;
+        this.priority = 0;
     }
     public Task(String name) {
         this.name = name;
         this.completed = false;
+        this.priority = 0;
     }
 
     public Task(String name, String description) {
         this.name = name;
         this.description = description;
         this.completed = false;
+        this.priority = 0;
     }
 
     public Task(String name, Date dueDate, String description, boolean completed, int priority){

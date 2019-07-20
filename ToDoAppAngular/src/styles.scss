@@ -7,9 +7,12 @@ $fa-font-path: "~font-awesome/fonts";
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 
+@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+
 //global generic class-style
 .green {color: green;}
 .red{color: red;}
+.white{color: white;}
 .blue{color: blue;}
 .orange{color: orange;}
 .pointer{cursor: pointer;}

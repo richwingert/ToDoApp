@@ -11,12 +11,13 @@ export class Task {
   //constructor to take any of the above elements
   constructor(o: any) {
     if (o) {
-      if (o.id)          this.id = o.id;
-      if (o.name)        this.name = o.name;
-      if (o.dueDate)     this.dueDate = new Date(o.dueDate);
-      if (o.description) this.description = o.description;
-      if (o.completed)   this.completed = o.completed;
-      if (o.priority)    this.priority = o.priority;
+      let clone = JSON.parse(JSON.stringify(o)); //create disassociated clone
+      if (clone.id)          this.id = clone.id;
+      if (clone.name)        this.name = clone.name;
+      if (clone.dueDate)     this.dueDate = new Date(clone.dueDate);
+      if (clone.description) this.description = clone.description;
+      if (clone.completed)   this.completed = clone.completed;
+      if (clone.priority)    this.priority = clone.priority;
     }
   }
 }

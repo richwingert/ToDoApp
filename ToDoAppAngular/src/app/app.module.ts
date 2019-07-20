@@ -4,6 +4,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {DashboardModule} from "./modules/dashboard/dashboard.module";
 import {HttpClientModule} from "@angular/common/http";
+import { ModalModule} from "ngx-bootstrap";
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -12,6 +16,9 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     DashboardModule,
+    FormsModule,
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule
   ],

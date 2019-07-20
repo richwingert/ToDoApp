@@ -1,0 +1,9 @@
+input.datepicker:read-only {
+  //override readonly
+  background-color: inherit !important;
+}
+
+div.modal-footer,
+div.modal-header {
+  background-color: #f7f7f9;
+}

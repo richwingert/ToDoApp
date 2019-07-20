@@ -1,2 +1,54 @@
+<!--Modal to enter Task information-->
+<ng-template #template>
+  <!--Header-->
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{mode}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
-<p>test</p>
+  <!--Task Entry Form-->
+  <div class="modal-body">
+    <!--Task Name-->
+    <div class="col-xs-12 col-12 col-md-12 form-group">
+      <label>Task Name</label>
+      <input class="form-control"
+             [(ngModel)]="task.name">
+    </div>
+
+    <!--Task Due Date-->
+    <div class="col-xs-6 col-6 col-md-6 form-group">
+      <label>Task Due Date</label>
+      <input type="text"
+             readonly
+             [(ngModel)]="task.dueDate"
+             placeholder="Pick a Due Date"
+             class="form-control datepicker"
+             bsDatepicker>
+    </div>
+
+    <!--Task Priority-->
+    <div class="col-xs-4 col-4 col-md-4 form-group">
+      <label class="label">Task Priority</label>
+      <select class="form-control" [(ngModel)]="task.priority">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <!--Task Description-->
+    <div class="col-xs-12 col-12 col-md-12 form-group">
+      <label>Task Description</label>
+      <textarea class="form-control">{{task.description}}</textarea>
+    </div>
+  </div>
+
+  <!--Confirmation Button-->
+  <div class="modal-footer">
+    <button class="btn btn-primary" (click)="save()">{{confirmText}}</button>
+  </div>
+</ng-template>
