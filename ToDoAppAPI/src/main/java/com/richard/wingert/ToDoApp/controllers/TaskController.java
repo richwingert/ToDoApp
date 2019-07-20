@@ -25,30 +25,39 @@ public class TaskController {
 
     @GetMapping("/getTasks")
     public List<Task> getTasks() {
+        logger.info("Entering /getTasks;");
+
+        //fetch all tasks from the repository
         List<Task> tasks = (List<Task>) taskRepository.findAll();
-        logger.info("In /getTasks; sending tasks: " + tasks.toString());
+        logger.info("Sending all tasks: " + tasks.toString());
         return tasks;
     }
 
     @PostMapping("/saveTask")
     public List<Task> saveTask(@RequestBody Task task) {
+        logger.info("Entering /saveTask;");
+
         //update entity
-        logger.info("In /saveTask; saving tasks: " + task.toString());
+        logger.info("Saving task: " + task.toString());
         taskRepository.save(task);
+
         //return updated repository
         List<Task> tasks = (List<Task>) taskRepository.findAll();
-        logger.info("In /saveTask; sending tasks: " + tasks.toString());
+        logger.info("Sending all tasks: " + tasks.toString());
         return tasks;
     }
 
     @PostMapping("/deleteTask")
     public List<Task> deleteTask(@RequestBody Task task) {
+        logger.info("Entering /deleteTask;");
+
         //update entity
-        logger.info("In /deleteTask; deleting tasks: " + task.toString());
+        logger.info("Deleting task: " + task.toString());
         taskRepository.delete(task);
+
         //return updated repository
         List<Task> tasks = (List<Task>) taskRepository.findAll();
-        logger.info("In /deleteTask; sending tasks: " + tasks.toString());
+        logger.info("Sending all tasks: " + tasks.toString());
         return tasks;
     }
 }
