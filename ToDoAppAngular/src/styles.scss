@@ -35,3 +35,14 @@ body .background-image{
   filter:         blur($blur);
 }
 
+.ag-theme-balham .ag-cell:not(:last-of-type):after {
+  //show a '|' border after each cell (except the last) to improve visibility
+  border-right: 1px solid rgba(189, 195, 199, 0.5);
+  content: " ";
+  height: 16px;
+  margin-top: 8px;
+  position: absolute;
+  text-indent: -2000px;
+  top: 0;
+  right: 0;
+}
