@@ -59,8 +59,16 @@ export class TasksWidgetComponent implements OnInit {
       .pipe(tap(data => console.log("Column Defs: ", data)))
       .subscribe(data =>{
         let colDefs: ColDef[] = [];
+
+        //add each colDef to the local var
         if(data && data["columnDefinitions"])
           data["columnDefinitions"].forEach(colDef => colDefs.push(colDef));
+
+        //add a date comparator to any date colDefs, as ag-grid doesn't compare dates correctly
+        colDefs.forEach(col => {
+          if (col.filter == 'agDateColumnFilter') col.filterParams = {comparator: this.dateComparator};
+        });
+
         this.colDefs = colDefs;
       })
   }
@@ -73,5 +81,96 @@ export class TasksWidgetComponent implements OnInit {
     this.columnApi = params.columnApi;
 
     this.api.sizeColumnsToFit();
+  }
+
+  seeOverdue(){
+    let api = this.tasksService.api;
+    //set complete filter to show incomplete filters
+    api.getFilterInstance("completed").setModel({isComplete: false, isIncomplete: true});
+
+    //set dueDate filter to show tasks due less than today
+    let dateModel: any = {
+      dateFrom: this.formatDate(new Date()),
+      dateTo: null,
+      filterType: "date",
+      type: "lessThan"
+    };
+    api.getFilterInstance("dueDate").setModel(dateModel);
+
+    //trigger change event;
+    api.onFilterChanged();
+  }
+
+  seeDueSoon(){
+    let api = this.tasksService.api;
+    //set complete filter to show incomplete filters
+    api.getFilterInstance("completed").setModel({isComplete: false, isIncomplete: true});
+
+    //set dueDate filter to show tasks due less than today
+    let today = new Date();
+    let tomorrow = new Date();
+    tomorrow.setDate(today.getDate()+1);
+
+    //build object to update ag-grid filter-model for date filters
+    let dateModel: any = {
+      condition1:{
+        dateFrom: this.formatDate(today),
+        dateTo: null,
+        filterType: "date",
+        type: "equals"
+      },
+      condition2:{
+        dateFrom: this.formatDate(tomorrow),
+        dateTo: null,
+        filterType: "date",
+        type: "equals"
+      },
+      operator: "OR",
+      filterType: "date"
+    };
+    api.getFilterInstance("dueDate").setModel(dateModel);
+
+    //trigger change event;
+    api.onFilterChanged();
+  }
+
+  clearFilters(){
+    let api = this.tasksService.api;
+    api.setFilterModel(null);
+    api.getFilterInstance("completed").setModel({isComplete: false, isIncomplete: false});
+    api.onFilterChanged();
+  }
+
+  //helper function to convert date to yyyy-mm-dd format to match ag-grid
+  formatDate(date: Date){
+    if(date){
+      let dd = date.getDate();
+      let mm = date.getMonth()+1;
+      let yyyy = date.getFullYear();
+      return `${yyyy}-${mm}-${dd}`;
+    }
+    else return "";
+  }
+
+  //ag-grid compares dates as date/time pairs. we don't care about the time. this is a comparator to compare two dates, ignoring the time.
+  //see https://www.ag-grid.com/javascript-grid-filter-date/ for more info
+  dateComparator = (filterLocalDateAtMidnight, cellValue) => {
+    if (!cellValue) return 0;
+
+    // We create a Date object for comparison against the filter date
+    let date = new Date(cellValue);
+    let day =   date.getDate();
+    let month = date.getMonth();
+    let year =  date.getFullYear();
+    let cellDate = new Date(year, month, day);
+
+    // Now we can compare
+    if (cellDate < filterLocalDateAtMidnight) {
+      return -1;
+    } else if (cellDate > filterLocalDateAtMidnight) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 }

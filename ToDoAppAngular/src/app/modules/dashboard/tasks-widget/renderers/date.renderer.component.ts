@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {ICellRendererAngularComp} from "ag-grid-angular";
 
 @Component({
-  selector: 'edit-renderer',
+  selector: 'date-renderer',
   template: `
     <i *ngIf="isPastDue"
        title="Past Due!"
@@ -10,7 +10,7 @@ import {ICellRendererAngularComp} from "ag-grid-angular";
     <i *ngIf="isDueSoon"
        title="Due Today or Tomorrow!"
        class="fa fa-exclamation blue fa-2x"></i>
-    {{params.data.dueDate | date}}
+    {{params.data.dueDate | date:'shortDate'}}
   `,
   styles: [``]
 })
@@ -31,6 +31,7 @@ export class DateRendererComponent implements ICellRendererAngularComp {
     this.isPastDue = params.data.dueDate
       ? this.isPast(dueDate)
       : false;
+    console.log(params.data.dueDate)
   }
 
   refresh(): boolean {return false;}

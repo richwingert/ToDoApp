@@ -32,7 +32,7 @@
       "cellRenderer": "dateRenderer",
       "filter": "agDateColumnFilter",
       "suppressSizeToFit": true,
-      "width": 150
+      "width": 125
     },
 
     {

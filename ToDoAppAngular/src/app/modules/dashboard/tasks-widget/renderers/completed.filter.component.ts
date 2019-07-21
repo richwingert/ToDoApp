@@ -54,12 +54,17 @@ export class CompletedFilterComponent implements IFilterAngularComp {
     return (this.completeCheck && params.data.completed) || (this.incompleteCheck && !params.data.completed);
   }
 
+  //function to fetch the currently selected filter values
   getModel(): any {
-    return {value: this.completeCheck || this.incompleteCheck};
+    return {isComplete: this.completeCheck, isIncomplete: this.incompleteCheck};
   }
 
+  //function to set the filter values from outside of the scope of this component
   setModel(model: any): void {
-    this.completeCheck = model ? model.value : '';
+    if(model){
+      this.incompleteCheck = model.isIncomplete;
+      this.completeCheck = model.isComplete;
+    }
   }
 
   onChange(): void {

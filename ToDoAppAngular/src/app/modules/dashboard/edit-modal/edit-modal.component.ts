@@ -32,6 +32,7 @@ export class EditModalComponent implements OnInit {
     this.tasksService.createTask(this.task).subscribe((tasks: Task[]) => {
       this.modalRef.hide();
       this.tasksService.api.setRowData(tasks);
+      this.tasksService.api.refreshCells();
     });
   }
 }
