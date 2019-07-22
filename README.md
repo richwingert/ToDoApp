@@ -10,7 +10,7 @@ Install prerequisites (jdk, maven, node, npm) first.
 4. API will be available at localhost:8080
 
 #Steps to run angular web server
-1. Install prerequisites (jdk, maven).
+1. Install prerequisites (node, npm).
 2. In `/ToDoAppAngular/`, run npm install
 3. In `/ToDoAppAngular/`, run npm start
 4. Web server will be available at localhost:4200
