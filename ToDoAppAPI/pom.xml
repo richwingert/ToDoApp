@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.richard.wingert</groupId>
-	<artifactId>ToDoApp</artifactId>
+	<artifactId>ToDoAppAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ToDoApp</name>
+	<name>ToDoAppAPI</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
