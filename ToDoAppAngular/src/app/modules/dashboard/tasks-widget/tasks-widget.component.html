@@ -1,0 +1,24 @@
+<h1>To-Do Tasks</h1>
+<div class="row col-12">
+  <div class="col-1">
+    <button class="btn btn-primary" (click)="seeDueSoon()">See Due Soon</button>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-primary" (click)="seeOverdue()">See Overdue</button>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-primary" (click)="clearFilters()">Clear Filters</button>
+  </div>
+</div>
+
+<!--Only initialize ag-grid if the colDefs have been loaded-->
+<div class="col-12" *ngIf="colDefs.length">
+  <ag-grid-angular style="width: 100%; height: 400px;"
+                   class="ag-theme-balham"
+                   [frameworkComponents]="frameworkComponents"
+                   [columnDefs]="colDefs"
+                   [rowData]="taskList"
+                   [rowSelection]="false"
+                   (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</div>

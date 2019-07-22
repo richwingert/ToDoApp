@@ -1,0 +1,65 @@
+{
+  "columnDefinitions": [
+    {
+      "headerName": "",
+      "field": "edit",
+      "cellRenderer": "editRenderer",
+      "headerComponent": "createTaskHeader",
+      "suppressSizeToFit": true,
+      "width": 50
+    },
+
+    {
+      "headerName": "Task Name",
+      "suppressSizeToFit": true,
+      "sortable": true,
+      "filter": "agTextColumnFilter",
+      "width": 250,
+      "field": "name"
+    },
+
+    {
+      "headerName": "Completed",
+      "field": "completed",
+      "filter": "completedFilter",
+      "cellRenderer": "completedRenderer",
+      "suppressSizeToFit": true,
+      "sortable": true,
+      "width": 125
+    },
+
+    {
+      "headerName": "Due Date",
+      "field": "dueDate",
+      "cellRenderer": "dateRenderer",
+      "filter": "agDateColumnFilter",
+      "suppressSizeToFit": true,
+      "sortable": true,
+      "width": 125
+    },
+
+    {
+      "headerName": "Priority",
+      "field": "priority",
+      "filter": "agNumberColumnFilter",
+      "suppressSizeToFit": true,
+      "sortable": true,
+      "width": 100
+    },
+
+    {
+      "headerName": "Description",
+      "field": "description",
+      "filter": "agTextColumnFilter",
+      "sortable": true
+    },
+    {
+      "headerName": "Delete",
+      "field": "del",
+      "cellRenderer": "deleteRenderer",
+      "suppressSizeToFit": true,
+      "sortable": true,
+      "width": 70
+    }
+  ]
+}
