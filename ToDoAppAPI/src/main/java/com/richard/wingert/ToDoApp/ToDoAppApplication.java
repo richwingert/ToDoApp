@@ -27,10 +27,13 @@ public class ToDoAppApplication {
     @Bean
     CommandLineRunner init(TaskRepository taskRepository) {
         return args -> {
+            //uncomment if we want to have some default starter tasks
+            /*
             Stream.of("Initial Sample Task", "Second Sample Task").forEach(name -> {
                 Task task = new Task(name, name + " description text");
                 taskRepository.save(task);
             });
+            */
             taskRepository.findAll().forEach(System.out::println);
         };
     }
